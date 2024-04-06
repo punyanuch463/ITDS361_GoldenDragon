@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Scienceobserver</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .highlight {
+            color: #04AA6D;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Welcome to Science Observer Page</h2>
+</div>
+
+<h2>Create Observing Program</h2>
+<form action="http://localhost:8080/createop" method="post">
+    <label for="planNo">Plan Number:</label>
+    <input type="number" id="planNo" name="planNo" required>
+    <br><br>
+
+    <label for="opticsPrimary">Optics Primary:</label>
+    <input type="text" id="opticsPrimary" name="opticsPrimary" required>
+    <br><br>
+
+    <label for="fStop">F-Stop:</label>
+    <input type="number" id="fStop" name="fStop" step="0.01" required>
+    <br><br>
+
+    <label for="opticsSecondaryRMS">Optics Secondary RMS:</label>
+    <input type="number" id="opticsSecondaryRMS" name="opticsSecondaryRMS" step="0.01" required>
+    <br><br>
+
+    <label for="scienceFoldMirrorDegree">Science Fold Mirror Degree:</label>
+    <input type="number" id="scienceFoldMirrorDegree" name="scienceFoldMirrorDegree" step="0.01" required>
+    <br><br>
+
+    <!-- Fold Mirror Type -->
+    <label for="scienceFoldMirrorType"><b>Fold Mirror Type</b></label>
+    <select name="scienceFoldMirrorType" required>
+        <option value="REFLECTIVE_CONVERGING_BEAM">REFLECTIVE_CONVERGING_BEAM</option>
+        <option value="CASSEGRAIN_FOCUS">CASSEGRAIN_FOCUS</option>
+    </select>
+    <br><br>
+
+    <label for="moduleContent">Module Content:</label>
+    <input type="number" id="moduleContent" name="moduleContent" required>
+    <br><br>
+
+    <!-- Calibration Unit -->
+    <label for="calibrationUnit"><b>Calibration Unit</b></label>
+    <select name="calibrationUnit" required>
+        <option value="Argon">Argon</option>
+        <option value="Xenon">Xenon</option>
+        <option value="ThAr">ThAr</option>
+        <option value="CuAr">CuAr</option>
+    </select>
+    <br><br>
+
+    <!-- Light Type -->
+    <label for="lightType"><b>Light Type</b></label>
+    <select name="lightType" required>
+        <option value="MaunaKeaSkyEmission">MaunaKeaSkyEmission</option>
+        <option value="CerroPachonSkyEmission">CerroPachonSkyEmission</option>
+    </select>
+    <br><br>
+
+    <!-- Tele Position 1 -->
+    <label for="telePosition1X"><b>Tele Position 1 X</b></label>
+    <input type="number" placeholder="Enter Tele Position 1 X" name="telePosition1X" required>
+    <label for="telePosition1Y"><b>Tele Position 1 Y</b></label>
+    <input type="number" placeholder="Enter Tele Position 1 Y" name="telePosition1Y" required>
+    <br><br>
+    <!-- Tele Position 2 -->
+    <label for="telePosition2X"><b>Tele Position 2 X</b></label>
+    <input type="number" placeholder="Enter Tele Position 2 X" name="telePosition2X" required>
+    <label for="telePosition2Y"><b>Tele Position 2 Y</b></label>
+    <input type="number" placeholder="Enter Tele Position 2 Y" name="telePosition2Y" required>
+    <br><br>
+    <!-- Tele Position 3 -->
+    <label for="telePosition3X"><b>Tele Position 3 X</b></label>
+    <input type="number" placeholder="Enter Tele Position 3 X" name="telePosition3X" required>
+    <label for="telePosition3Y"><b>Tele Position 3 Y</b></label>
+    <input type="number" placeholder="Enter Tele Position 3 Y" name="telePosition3Y" required>
+    <br><br>
+    <!-- Tele Position 4 -->
+    <label for="telePosition4X"><b>Tele Position 4 X</b></label>
+    <input type="number" placeholder="Enter Tele Position 4 X" name="telePosition4X" required>
+    <label for="telePosition4Y"><b>Tele Position 4 Y</b></label>
+    <input type="number" placeholder="Enter Tele Position 4 Y" name="telePosition4Y" required>
+    <br><br>
+    <!-- Tele Position 5 -->
+    <label for="telePosition5X"><b>Tele Position 5 X</b></label>
+    <input type="number" placeholder="Enter Tele Position 5 X" name="telePosition5X" required>
+    <label for="telePosition5Y"><b>Tele Position 5 Y</b></label>
+    <input type="number" placeholder="Enter Tele Position 5 Y" name="telePosition5Y" required>
+    <br><br>
+    <button type="submit">Create Observing Program</button>
+</form>
+
+
+<h1>All Observing Programs</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Optics Primary</th>
+        <th>F-Stop</th>
+        <th>Optics Secondary RMS</th>
+        <th>Science Fold Mirror Degree</th>
+        <th>Science Fold Mirror Type</th>
+        <th>Module Content</th>
+        <th>Calibration Unit</th>
+        <th>Light Type</th>
+        <th>Tele Positions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="observingProgram : ${observingPrograms}">
+        <td th:text="${observingProgram.opticsPrimary}"></td>
+        <td th:text="${observingProgram.fStop}"></td>
+        <td th:text="${observingProgram.opticsSecondaryRMS}"></td>
+        <td th:text="${observingProgram.scienceFoldMirrorDegree}"></td>
+        <td th:text="${observingProgram.scienceFoldMirrorType}"></td>
+        <td th:text="${observingProgram.moduleContent}"></td>
+        <td th:text="${observingProgram.calibrationUnit}"></td>
+        <td th:text="${observingProgram.lightType}"></td>
+        <td th:text="${observingProgram.lightType}"></td>
+        <td>
+            <ul>
+                <li th:each="telePosition : ${observingProgram.telePositionPair}">
+                    <span th:text="${telePosition.direction}"></span>,
+                    <span th:text="${telePosition.degree}"></span>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
