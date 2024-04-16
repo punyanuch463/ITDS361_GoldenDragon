@@ -1,5 +1,4 @@
-<h1>เเก้ code path เข้าไปใน src
-html เเก้ css ตรง style ไปเลย ไม่ต้องสร้าง css เเยก </h1>
+<h1>    Update 16 -4 -67 เสร็จเกือบหมดเเล้วเหลือเเค่ทำ Pattern Design กับ readme เเล้วก็ Dockerfile  </h1>
 
 <h2>รุปเเบบ path</h2>
 
