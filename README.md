@@ -1,4 +1,4 @@
-<h1>    Update 16 -4 -67 เสร็จเกือบหมดเเล้วเหลือเเค่ทำ Pattern Design กับ readme เเล้วก็ Dockerfile Update รูปเเบบ path   </h1>
+<h1>    Update 16 -4 -67 เสร็จเกือบหมดเเล้วเหลือเเค่ทำ Pattern Design กับ readme เเล้วก็ Dockerfile   </h1>
 
 <h2>รุปเเบบ path</h2>
 
@@ -39,7 +39,7 @@
     
     |                        ├──LoginController.java            
     
-    |                      ├──Model // ยังไม่ต้องเเก้ในนี้
+    |                      ├──Model 
 
     |                        ├──Astronomer
 
