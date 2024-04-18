@@ -1,4 +1,4 @@
-<h1>    Update 16 -4 -67 เสร็จเกือบหมดเเล้วเหลือเเค่ทำ Pattern Design กับ readme เเล้วก็ Dockerfile  </h1>
+<h1>    Update 16 -4 -67 เสร็จเกือบหมดเเล้วเหลือเเค่ทำ Pattern Design กับ readme เเล้วก็ Dockerfile   </h1>
 
 <h2>รุปเเบบ path</h2>
 
@@ -18,40 +18,80 @@
     |           ├──build
     
     |           ├──....
+
+    |           ├──db
+
+    |               ├──Gemini-update-17-4-2567.sql
     
     |           ├──src
     
     |              ├──main
     
-    |              ├──java
+    |                  ├──java
     
-    |                ├──com.example.gemini  
+    |                    ├──com.example.gemini  
     
-    |                  ├──Controller 
+    |                      ├──Controller 
     
-    |                    ├──ObservingProgramController.java  //เเก้ตัวนี้ ควบคุม page html scienceobserver.html 
+    |                        ├──ObservingProgramController.java   
     
-    |                    ├──SciecncePlanController.java      //เเก้ตัวนี้ ควบคุม page html astronomer.html
+    |                        ├──SciecncePlanController.java      
     
-    |                    ├──LoginController.java             //เเก้ตัวนี้ ควบคุม page html login.html
+    |                        ├──LoginController.java            
     
-    |                  ├──Model // ยังไม่ต้องเเก้ในนี้
+    |                      ├──Model 
+
+    |                        ├──Astronomer
+
+    |                        ├──AstronomerRepository
+
+    |                        ├──DataProcessReqModel
+
+    |                        ├──DataProcReqMentRepository
+
+    |                        ├──ObservingProgramModelGDDG
+
+    |                        ├──ObservingProGramRepository
+
+    |                        ├──ScienceObserver
+
+    |                        ├──ScienceObserverRepository
+
+    |                        ├──SciencePlanModelGDDG
+
+    |                        ├──SciencePlanRepository
+
+    |                        ├──User
+
+    |                        ├──UserRepository
     
-    |                  ├──GeminiApplication //ไม่ต้องเเก้ในนี้
+    |                      ├──GeminiApplication //ไม่ต้องเเก้ในนี้
+
+    |                  ├──mysql
+
+    |                      ├──JDBCDriverLoader
     
-    |              ├──resources
+    |                  ├──resources
     
-    |                ├──application.properties
+    |                    ├──application.properties
     
-    |                ├──templates
+    |                    ├──templates
     
-    |                  ├──astronomer.html //เเก้ตัวนี้
+    |                      ├──astronomerCreateSP.html
+
+    |                      ├──astronomerHomePage.html
+
+    |                      ├──astronomerSubmitSP.html
     
-    |                  ├──scienceobserver.html //เเก้ตัวนี้
+    |                      ├──login.html 
     
-    |                  ├──login.html //เเก้ตัวนี้
-    
-    |                  ├──notfound.html
+    |                      ├──notfound.html
+
+    |                      ├──scienceobserverCreateOP.html 
+
+    |                      ├──scienceobserverHomePage.html 
+
+    |                      ├──signup.html 
 
     
 
