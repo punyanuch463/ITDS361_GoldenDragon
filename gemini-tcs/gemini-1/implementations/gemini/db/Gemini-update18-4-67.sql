@@ -22,7 +22,7 @@ CREATE TABLE science_plans (
     telescope_location VARCHAR(255),
     status VARCHAR(50)
 );
-# ยังไม่ต้อง Run มีติดไว้เฉยๆ
+# run ตัยนี้ด้วย เชื่อมใน Science plan
 CREATE TABLE data_proc_requirements (
     id SERIAL PRIMARY KEY,
     file_type VARCHAR(255),
@@ -37,9 +37,7 @@ CREATE TABLE data_proc_requirements (
     whites DOUBLE PRECISION,
     blacks DOUBLE PRECISION,
     luminance DOUBLE PRECISION,
-    hue DOUBLE PRECISION,
-    science_plan_id BIGINT,
-    FOREIGN KEY (science_plan_id) REFERENCES science_plan_gddg (id)
+    hue DOUBLE PRECISION
 );
 
 # About  Controller --> ObservingProgramController   Model--> ObservingProgram
@@ -79,7 +77,7 @@ VALUES 	("astro01" , "123" , "astronomer" ),
 INSERT INTO science_plans (plan_no, creator, submitter, funding_inusd, objectives, star_system, start_Date, end_Date, telescope_location, status)
 VALUES (1, 'John Doe', 'John Doe', 1000.0, '1. To explore Neptune. 2. To collect astronomical data for future research.', 'Andromeda', '2024-04-11 09:00:00', '2024-04-12 10:00:00', 'HAWAII', 'SAVED'),
        (2, 'Jane Dunn', 'Andrew Griffin', 2500.0, '1. To explore Mars. 2. To collect astronomical data for future research.', 'Antlia', '2024-04-13 13:00:00', '2024-04-14 15:00:00', 'CHILE', 'SAVED'),
-	   (3, 'astro01', 'astro02', 2400.0, '1. To explore Earth. 2. To collect astronomical data for future research.', 'Leo', '2024-04-15 09:00:00', '2024-04-16 10:00:00', 'CHILE', 'TESTED'),
+ (3, 'astro01', 'astro02', 2400.0, '1. To explore Earth. 2. To collect astronomical data for future research.', 'Leo', '2024-04-15 09:00:00', '2024-04-16 10:00:00', 'CHILE', 'TESTED'),
        (4, 'astro03', 'astro04', 1800.0, '1. To explore Moon 21. 2. To collect astronomical data for future research.', 'Microscopium', '2024-04-15 09:00:00', '2024-04-16 10:00:00', 'HAWAII', 'TESTED');
 
 
@@ -107,7 +105,8 @@ select * from observing_program ;
 SET SQL_SAFE_UPDATES = 0;
 
 DELETE FROM users ;
-DELETE FROM science_plans WHERE plan_no="3" and creator="astro03";
+DELETE FROM science_plans WHERE plan_no="7" ;
+-- and creator="astro03";
 DELETE FROM users WHERE username = "sciobser01";
 drop table science_plans ;
 ALTER TABLE data_proc_requirements DROP FOREIGN KEY FKc0lhsh4pv5rieoxr2p9ua1e5f;
