@@ -3,7 +3,7 @@
 <h2>รุปเเบบ path</h2>
 
 
-|   gemini-tcs
+    |   gemini-tcs
 
     ├── gemini-1
     
