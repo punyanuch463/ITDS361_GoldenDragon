@@ -50,7 +50,7 @@ public class SciecncePlanController {
     // create science plan
 
     @PostMapping("/checkId")
-    public Object checkSciencePlans(
+    public Object createSciencePlans(
             @RequestParam("planNo") int planNo,Model model)
     {
         SciencePlanModelGDDG existingSP = sciencePlanRepository.findByplanNo(planNo);
@@ -142,6 +142,7 @@ public class SciecncePlanController {
     public ModelAndView getByPlanNo(@RequestParam("planNo") int planNo) {
 
         SciencePlanModelGDDG mySP  =  sciencePlanRepository.findByplanNo(planNo);
+//        SciencePlan idSP  =  ocs.getSciencePlanByNo(planNo);
 
             if (mySP != null ){
                 if (mySP.getStatus() == SciencePlan.STATUS.TESTED) {

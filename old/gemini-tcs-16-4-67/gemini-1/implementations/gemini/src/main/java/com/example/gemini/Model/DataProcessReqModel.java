@@ -13,7 +13,7 @@ import edu.gemini.app.ocs.model.DataProcRequirement;
         private Long id;
 
         // Attributes of DataProcRequirement
-
+        @Column(name = "fileType")
         private String fileType;
         private String fileQuality;
         private String colorType;

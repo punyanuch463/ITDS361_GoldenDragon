@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-//Pattern design == Adapter
+
 @Entity
     @Table(name = "science_plans")
     public class SciencePlanModelGDDG extends SciencePlan {

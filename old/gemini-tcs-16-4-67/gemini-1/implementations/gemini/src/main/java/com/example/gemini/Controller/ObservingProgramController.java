@@ -20,10 +20,13 @@ public class ObservingProgramController {
     private SciencePlanRepository sciencePlanRepository;
     @Autowired
     private ObservingProGramRepository observingProGramRepository;
+//    @Autowired
+//    private AstronomerRepository astronomerRepository;
 
 @GetMapping("/getALSPforobser")
     public String getAllSciencePlans(Model model) {
-
+//    ArrayList<SciencePlanModelGDDG> sciencePlans = (ArrayList<SciencePlanModelGDDG>) sciencePlanRepository.findAll();
+//    model.addAttribute("sciencePlans", sciencePlans);
     ArrayList<SciencePlanModelGDDG> sciencePlans = (ArrayList<SciencePlanModelGDDG>) sciencePlanRepository.findAll();
     ArrayList<ObservingProgramModelGDDG> allObservingPrograms = (ArrayList<ObservingProgramModelGDDG>) observingProGramRepository.findAll();
 
@@ -44,6 +47,7 @@ public class ObservingProgramController {
     public ModelAndView getByPlanNo(@RequestParam("planNo") int planNo) {
 
         SciencePlanModelGDDG mySP  =  sciencePlanRepository.findByplanNo(planNo);
+//        SciencePlan idSP  =  ocs.getSciencePlanByNo(planNo);
         if (mySP != null ){
             if (mySP.getStatus() == SciencePlan.STATUS.TESTED) {
                 ModelAndView modelAndView = new ModelAndView("scienceobserverCreateOP");
@@ -116,15 +120,32 @@ public class ObservingProgramController {
         observingProGramRepository.save(op);
             op.validateObservingCondition(op);
         ocs.saveObservingProgram(op);
+//        List<ObservingProgramModelGDDG> allObservingPrograms = new ArrayList<>();
+//        Iterable<ObservingProgramModelGDDG> observingProgramsIterable = observingProGramRepository.findAll();
+//        for (ObservingProgramModelGDDG observingProgram : observingProgramsIterable) {
+//            allObservingPrograms.add(observingProgram);
+//        }
+//
+//        ModelAndView modelAndView = new ModelAndView("scienceobserverCreateOP");
+//        modelAndView.addObject("observingPrograms", allObservingPrograms);
+//        return modelAndView;
 
 
         return new ModelAndView("redirect:/getAllObserPro");
     }
     @GetMapping("/getAllObserPro")
     public String getAllObservingPrograms(Model model) {
+//        List<ObservingProgramModelGDDG> allObservingPrograms = new ArrayList<>();
+//        Iterable<ObservingProgramModelGDDG> observingProgramsIterable = observingProGramRepository.findAll();
+//        for (ObservingProgramModelGDDG observingProgram : observingProgramsIterable) {
+//            allObservingPrograms.add(observingProgram);
+//        }
     ArrayList<ObservingProgramModelGDDG> allObservingPrograms = (ArrayList<ObservingProgramModelGDDG>) observingProGramRepository.findAll();
     model.addAttribute("observingPrograms", allObservingPrograms);
 System.out.println(allObservingPrograms);
+//    ModelAndView modelAndView = new ModelAndView("scienceobserverHomePage");
+//        modelAndView.addObject("observingPrograms", allObservingPrograms);
+//        return modelAndView;
         return "scienceobserverHomePage";
     }
 

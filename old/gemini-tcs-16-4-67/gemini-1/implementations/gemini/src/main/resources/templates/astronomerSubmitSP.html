@@ -88,46 +88,40 @@
         table tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
-            display: inline-block; /* Ensure buttons are displayed in line */
-            text-decoration: none; /* Remove underline from buttons */
-            text-align: center; /* Center text in buttons */
+        .testalert {
+            font-size:20px ;
         }
 
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        button:focus {
-            outline: none;
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px; /* Adjust the margin as needed */
-        }
-
-        .button-container button {
-            margin: 0 10px; /* Adjust the margin to separate buttons */
-        }
     </style>
 </head>
 <body>
-
 
 <div class="container">
     <h1>Welcome to Astronomer Page</h1>
 </div>
 
-<!-- ดูตารรางรวมของ science plan -->
-<h2>All Science Plans</h2>
+<br>
+<h2>AlertMessage</h2>
+<table border="1">
+    <thead>
+    <th>alertMessage</th>
+    </thead>
+    <tbody>
+    <tr th:each="msg : ${alertMessage}">
+      <td class="testalert" th:text="${alertMessage}"></td>
+    </tbody>
+</table>
+<br>
+
+<H2> Get BY ID Science Plan</H2>
+
+<form action="http://localhost:8080/byidSP" method="post">
+    <label for="planNo"><b>ID</b></label>
+    <input type="text" placeholder="Enter id" name="planNo" required>
+    <br><br>
+    <button type="submit">Search</button>
+</form>
+
 <table border="1">
     <thead>
     <tr>
@@ -141,30 +135,63 @@
         <th>End Date</th>
         <th>Telescope Location</th>
         <th>Status</th>
-        <!-- เพิ่มหัวข้อคอลัมน์ตามที่ต้องการ -->
     </tr>
     </thead>
     <tbody>
-    <tr th:each="sciencePlan : ${sciencePlans}">
-        <td th:text="${sciencePlan.planNo}"></td>
-        <td th:text="${sciencePlan.creator}"></td>
-        <td th:text="${sciencePlan.submitter}"></td>
-        <td th:text="${sciencePlan.fundingInUSD}"></td>
-        <td th:text="${sciencePlan.objectives}"></td>
-        <td th:text="${sciencePlan.starSystem}"></td>
-        <td th:text="${sciencePlan.startDate}"></td>
-        <td th:text="${sciencePlan.endDate}"></td>
-        <td th:text="${sciencePlan.telescopeLocation}"></td>
-        <td th:text="${sciencePlan.status}"></td>
-        <!-- แสดงข้อมูลตามที่คุณต้องการ -->
+    <tr th:each="sciencePlanByID : ${sciencePlansTocontrollerByID}">
+        <td th:text="${sciencePlanByID.planNo}"></td>
+        <td th:text="${sciencePlanByID.creator}"></td>
+        <td th:text="${sciencePlanByID.submitter}"></td>
+        <td th:text="${sciencePlanByID.fundingInUSD}"></td>
+        <td th:text="${sciencePlanByID.objectives}"></td>
+        <td th:text="${sciencePlanByID.starSystem}"></td>
+        <td th:text="${sciencePlanByID.startDate}"></td>
+        <td th:text="${sciencePlanByID.endDate}"></td>
+        <td th:text="${sciencePlanByID.telescopeLocation}"></td>
+        <td th:text="${sciencePlanByID.status}"></td>
     </tr>
     </tbody>
 </table>
 
-    <div class="button-container">
-    <button onclick="location.href='/astronomerCreateSP'"> Create Science Plan </button>
-    <button onclick="location.href='/astronomerSubmitSP'"> Submit Science Plan </button>
-</div>
+<br>
+<H2> Submit BY ID Science Plan</H2>
+<form action="http://localhost:8080/submitSP" method="post">
+    <label for="planNo"><b>ID</b></label>
+    <input type="text" placeholder="Enter planNo" name="planNo" required>
+    <br><br>
+    <button type="submit">submit</button>
+</form>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Plan Number</th>
+        <th>Creator</th>
+        <th>Submitter</th>
+        <th>Funding (USD)</th>
+        <th>Objectives</th>
+        <th>Star System</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Telescope Location</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="submitSP : ${submitSPByID}">
+        <td th:text="${submitSP.planNo}"></td>
+        <td th:text="${submitSP.creator}"></td>
+        <td th:text="${submitSP.submitter}"></td>
+        <td th:text="${submitSP.fundingInUSD}"></td>
+        <td th:text="${submitSP.objectives}"></td>
+        <td th:text="${submitSP.starSystem}"></td>
+        <td th:text="${submitSP.startDate}"></td>
+        <td th:text="${submitSP.endDate}"></td>
+        <td th:text="${submitSP.telescopeLocation}"></td>
+        <td th:text="${submitSP.status}"></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

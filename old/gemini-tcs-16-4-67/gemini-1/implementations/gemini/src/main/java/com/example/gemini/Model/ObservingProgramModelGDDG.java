@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 
 import java.util.Arrays;
 
-//Pattern design == Adapter
 @Entity
 @Table(name = "observing_program")
 public class ObservingProgramModelGDDG extends ObservingProgram {
@@ -32,7 +31,7 @@ public class ObservingProgramModelGDDG extends ObservingProgram {
 
     @Enumerated(EnumType.STRING)
     private ObservingProgramConfigs.LightType lightType;
-    @Transient
+    @Transient // ไม่ต้องการบันทึกข้อมูลลงในฐานข้อมูล
     private TelePositionPair[] telePositionPairs;
     private boolean validationStatus;
 
