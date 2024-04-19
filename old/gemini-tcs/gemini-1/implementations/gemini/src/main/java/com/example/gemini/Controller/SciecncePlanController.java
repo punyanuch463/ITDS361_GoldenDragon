@@ -29,13 +29,6 @@ public class SciecncePlanController {
     private AstronomerRepository astronomerRepository;
 
     //  Get all the science plans
-    @GetMapping("/testallsp")
-    public @ResponseBody Iterable<SciencePlanModelGDDG> testAllSciencePlans() {
-        //        model.addAttribute("sciencePlans", sciencePlans);
-        return  sciencePlanRepository.findAll();
-    }
-
-
     @GetMapping("/getAllSP")
     public String getAllSciencePlans(Model model) {
         ArrayList<SciencePlanModelGDDG> sciencePlans = (ArrayList<SciencePlanModelGDDG>) sciencePlanRepository.findAll();
@@ -154,12 +147,12 @@ public class SciecncePlanController {
                 if (mySP.getStatus() == SciencePlan.STATUS.TESTED) {
                    ;
                     ModelAndView modelAndView = new ModelAndView("astronomerSubmitSP");
-                    modelAndView.addObject("alertMessage", "This science plan has  been tested already and can be Submitted Science Plan.");
+                    modelAndView.addObject("alertMessage", "the science plan number does not exist and can be Submit Science Plan.");
                     modelAndView.addObject("sciencePlansTocontrollerByID", mySP);
                     return modelAndView;
                 } else {
                        ModelAndView modelAndView = new ModelAndView("astronomerSubmitSP");
-                    modelAndView.addObject("alertMessage", "This science plan has not been tested yet and can't be Submitted Science Plan..");
+                    modelAndView.addObject("alertMessage", "This science plan has not been tested yet.");
                     modelAndView.addObject("sciencePlansTocontrollerByID", mySP);
                     return modelAndView;
                 }
